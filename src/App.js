@@ -5,16 +5,29 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
-
+import Alert from '@mui/material/Alert';
 
 function App() {
   
   const [numberVal, setNumberVal] = useState("");
+  const [error, setError] = useState("");
+  const [errorStatus, setErrorStatus] = useState(false);
   
   // Calculate the Kaprekar value show how to arrive there
   function calculateValue(){
-    console.log("Button clicked!");
+    
+    //Clearing any errors
+    setErrorStatus(false);
+    setError("");
+    
+    if (numberVal.length !== 4) {
+      setErrorStatus(true);
+      setError("Number must be four digits");
+    }
+    
+    console.log(numberVal.length);
     console.log(numberVal);
+    
   }
   
   return (
@@ -39,9 +52,12 @@ function App() {
         Kaprekar constant, or 6174, is a constant that arises when we take a 4-digit integer, form the largest and smallest numbers from its digits, and then subtract these two numbers. Continuing with this process of forming and subtracting, we will always arrive at the number 6174.
         </p>
         
+        {errorStatus && <Alert severity="error">{error}</Alert>}
+        
         <p>Try it yourself</p>
         <Stack spacing={2} direction="row">
           <TextField
+            error={errorStatus}
             required
             InputLabelProps={{ shrink: true }}
             id="outlined-required"
