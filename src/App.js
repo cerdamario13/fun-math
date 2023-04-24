@@ -3,14 +3,27 @@ import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import { useState } from 'react';
+
 
 function App() {
+  
+  const [numberVal, setNumberVal] = useState("");
+  
+  // Calculate the Kaprekar value show how to arrive there
+  function calculateValue(){
+    console.log("Button clicked!");
+    console.log(numberVal);
+  }
+  
   return (
     <>
       <Box
         m={2}
         pt={3}
         paddingX={5}
+        paddingY={3}
         component="form"
         sx={{
           '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -27,15 +40,19 @@ function App() {
         </p>
         
         <p>Try it yourself</p>
-        <TextField
-          required
-          id="outlined-required"
-          label="Enter a Value"
-          defaultValue="6147"
-          type='number'
-        />
-        <Button variant="outlined">Outlined</Button>
-        
+        <Stack spacing={2} direction="row">
+          <TextField
+            required
+            InputLabelProps={{ shrink: true }}
+            id="outlined-required"
+            label="Enter a Value"
+            value={numberVal}
+            type='number'
+            onChange={(event) => setNumberVal(event.target.value)}
+          />
+          <Button variant="outlined" onClick={calculateValue}>Outlined</Button>
+        </Stack>
+                
       </Box>      
     </>
   );
