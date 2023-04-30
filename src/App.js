@@ -27,7 +27,7 @@ function App() {
     var numberLower = Number(numberValArrayAsc.join(''));
     var numberHigh = Number(numberValArrayDesc.join(''));
 
-    var output = (numberHigh - numberLower.toString());
+    var output = (numberHigh - numberLower).toString();
 
     // Check if the output is the constant
     if (output === '6174') {
