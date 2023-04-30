@@ -12,6 +12,32 @@ function App() {
   const [numberVal, setNumberVal] = useState("");
   const [error, setError] = useState("");
   const [errorStatus, setErrorStatus] = useState(false);
+
+  // Kaprekar Constant function
+  function kaprekar_function(value) {
+    // sorting numbers
+    let numberValArrayAsc = []
+    for (var i=0; i<numberVal.length; i++) {
+      numberValArrayAsc = numberValArrayAsc.concat(value[i]);
+    }
+
+    numberValArrayAsc.sort();
+    var numberValArrayDesc = numberValArrayAsc.map(x=> x).reverse();
+
+    var numberLower = Number(numberValArrayAsc.join(''));
+    var numberHigh = Number(numberValArrayDesc.join(''));
+
+    var output = (numberHigh - numberLower.toString());
+
+    // Check if the output is the constant
+    if (output === '6174') {
+      console.log(output);
+      return output
+    } else { // Else return to the function
+      console.log(output);
+      kaprekar_function(output);
+    }
+  }
   
   // Calculate the Kaprekar value show how to arrive there
   function calculateValue(){
@@ -25,8 +51,8 @@ function App() {
       setError("Number must be four digits");
     }
     
-    console.log(numberVal.length);
-    console.log(numberVal);
+    kaprekar_function(numberVal);
+    
     
   }
   
