@@ -12,6 +12,7 @@ function App() {
   const [numberVal, setNumberVal] = useState("");
   const [error, setError] = useState("");
   const [errorStatus, setErrorStatus] = useState(false);
+  const [kapIterations, setKapIterations] = useState(0);
 
   // Kaprekar Constant function
   function kaprekar_function(value) {
@@ -28,6 +29,7 @@ function App() {
     var numberHigh = Number(numberValArrayDesc.join(''));
 
     var output = (numberHigh - numberLower).toString();
+    setKapIterations(kapIterations + 1);
 
     // Check if the output is the constant
     if (output === '6174') {
@@ -45,13 +47,15 @@ function App() {
     //Clearing any errors
     setErrorStatus(false);
     setError("");
+    setKapIterations(0);
     
     if (numberVal.length !== 4) {
       setErrorStatus(true);
       setError("Number must be four digits");
     }
     
-    kaprekar_function(numberVal);
+    var kaprekarValue = kaprekar_function(numberVal);
+    console.log(kapIterations);
     
     
   }
@@ -94,6 +98,8 @@ function App() {
           />
           <Button variant="outlined" onClick={calculateValue}>Outlined</Button>
         </Stack>
+
+
                 
       </Box>      
     </>
