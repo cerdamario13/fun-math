@@ -29,6 +29,9 @@ function App() {
     var numberHigh = Number(numberValArrayDesc.join(''));
 
     var output = (numberHigh - numberLower).toString();
+    
+    console.log("Operation: ", `${numberHigh} - ${numberLower} = ${output}`)
+    
     setKapIterations(kapIterations + 1);
 
     // Check if the output is the constant
@@ -52,12 +55,13 @@ function App() {
     if (numberVal.length !== 4) {
       setErrorStatus(true);
       setError("Number must be four digits");
+      return;
     }
     
     var kaprekarValue = kaprekar_function(numberVal);
     console.log(kapIterations);
     
-    
+    return kaprekarValue
   }
   
   return (
