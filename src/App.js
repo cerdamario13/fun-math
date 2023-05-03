@@ -15,7 +15,7 @@ function App() {
   const [kapIterations, setKapIterations] = useState(0);
 
   // Kaprekar Constant function
-  function kaprekar_function(value) {
+  function kaprekar_function(value, counter = 1) {
     // sorting numbers
     let numberValArrayAsc = []
     for (var i=0; i<numberVal.length; i++) {
@@ -30,19 +30,19 @@ function App() {
 
     var output = (numberHigh - numberLower).toString();
     
-    console.log("Operation: ", `${numberHigh} - ${numberLower} = ${output}`)
+    console.log("Operation: ", `${numberHigh} - ${numberLower} = ${output}`);
     
-    setKapIterations(kapIterations + 1);
-
+  
     // Check if the output is the constant
     if (output === '6174') {
       console.log(output);
-      return output
+      return {value: output, iterations: counter};
     } else { // Else return to the function
       console.log(output);
-      kaprekar_function(output);
+      console.log('Iteration: ', counter);
+      kaprekar_function(output, counter+1);
     }
-  }
+  };
   
   // Calculate the Kaprekar value show how to arrive there
   function calculateValue(){
@@ -59,10 +59,10 @@ function App() {
     }
     
     var kaprekarValue = kaprekar_function(numberVal);
-    console.log(kapIterations);
+    console.log(kaprekarValue);
     
-    return kaprekarValue
-  }
+    return kaprekarValue;
+  };
   
   return (
     <>
@@ -100,7 +100,7 @@ function App() {
             type='number'
             onChange={(event) => setNumberVal(event.target.value)}
           />
-          <Button variant="outlined" onClick={calculateValue}>Outlined</Button>
+          <Button variant="outlined" onClick={() => calculateValue()}>Outlined</Button>
         </Stack>
 
 
