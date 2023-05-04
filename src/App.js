@@ -15,7 +15,7 @@ function App() {
   const [kapIterations, setKapIterations] = useState(0);
 
   // Kaprekar Constant function
-  function kaprekar_function(value, counter = 1, operations = []) {
+  function kaprekar_function(value, operations = []) {
     // sorting numbers
     let numberValArrayAsc = []
     for (var i=0; i<numberVal.length; i++) {
@@ -23,29 +23,23 @@ function App() {
     }
     numberValArrayAsc.sort();
     var numberValArrayDesc = numberValArrayAsc.map(x=> x).reverse();
-    
-    // if (!operations.length){
-    //   var operations = []; 
-    // } 
-       
+           
     var numberLower = Number(numberValArrayAsc.join(''));
     var numberHigh = Number(numberValArrayDesc.join(''));
 
     var output = (numberHigh - numberLower).toString();
     
-    console.log(`${numberHigh} - ${numberLower} = ${output}`);
     operations.push(`${numberHigh} - ${numberLower} = ${output}`);
     console.log('Operations: ', operations);
   
     // Check if the output is the constant
     if (output === '6174') {
       console.log(output);
-      return {iterations: counter, operations: operations};
+      return {operations: operations};
     }
      // Else return to the function
       console.log(output);
-      console.log('Iteration: ', counter);
-      return kaprekar_function(output, counter+1, operations);
+      return kaprekar_function(output, operations);
   };
   
   // Calculate the Kaprekar value show how to arrive there
@@ -62,7 +56,7 @@ function App() {
       return;
     }
     
-    var kaprekarValue = kaprekar_function(numberVal, 0);
+    var kaprekarValue = kaprekar_function(numberVal);
     console.log("Function Return: ", kaprekarValue);
     console.log("Iterations", kapIterations);
     
