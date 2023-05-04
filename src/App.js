@@ -21,27 +21,28 @@ function App() {
     for (var i=0; i<numberVal.length; i++) {
       numberValArrayAsc = numberValArrayAsc.concat(value[i]);
     }
-
     numberValArrayAsc.sort();
     var numberValArrayDesc = numberValArrayAsc.map(x=> x).reverse();
-
+    
+    var operations = [];
+    
     var numberLower = Number(numberValArrayAsc.join(''));
     var numberHigh = Number(numberValArrayDesc.join(''));
 
     var output = (numberHigh - numberLower).toString();
     
-    console.log("Operation: ", `${numberHigh} - ${numberLower} = ${output}`);
-    
+    operations.push(`${numberHigh} - ${numberLower} = ${output}`);
+    console.log('Operations: ', operations);
   
     // Check if the output is the constant
     if (output === '6174') {
       console.log(output);
-      return {value: output, iterations: counter};
-    } else { // Else return to the function
+      return counter;
+    }
+     // Else return to the function
       console.log(output);
       console.log('Iteration: ', counter);
-      kaprekar_function(output, counter+1);
-    }
+      return kaprekar_function(output, counter+1);
   };
   
   // Calculate the Kaprekar value show how to arrive there
@@ -58,7 +59,7 @@ function App() {
       return;
     }
     
-    var kaprekarValue = kaprekar_function(numberVal);
+    var kaprekarValue = kaprekar_function(numberVal, 0);
     console.log(kaprekarValue);
     
     return kaprekarValue;
