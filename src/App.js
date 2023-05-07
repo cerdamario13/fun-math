@@ -116,7 +116,13 @@ function App() {
           
         </Stack>
         
-        {operations.length ? (<KapOperationsList />) : (<>None</>)}
+        {operations.length ? (
+          <>
+            <Typography variant="subtitle1" >Operations:</Typography>
+            <KapOperationsList />
+          </>
+
+        ) : (<></>)}
         
       </Box>      
     </>
