@@ -65,8 +65,8 @@ function App() {
     
     return (
       <List>
-        {operations.map(item => 
-          <ListItem>
+        {operations.map((item, idx) => 
+          <ListItem key={idx}>
             <ListItemText
               primary={item}
             />
