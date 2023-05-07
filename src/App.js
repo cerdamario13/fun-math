@@ -6,16 +6,20 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
 import Alert from '@mui/material/Alert';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 
 function App() {
   
   const [numberVal, setNumberVal] = useState("");
   const [error, setError] = useState("");
   const [errorStatus, setErrorStatus] = useState(false);
-  const [kapIterations, setKapIterations] = useState(0);
+  const [operations, setOperations] = useState([]);
 
+  
   // Kaprekar Constant function
-  function kaprekar_function(value, operations = []) {
+  const kaprekar_function = (value, operations = []) => {
     // sorting numbers
     let numberValArrayAsc = []
     for (var i=0; i<numberVal.length; i++) {
@@ -30,25 +34,22 @@ function App() {
     var output = (numberHigh - numberLower).toString();
     
     operations.push(`${numberHigh} - ${numberLower} = ${output}`);
-    console.log('Operations: ', operations);
   
     // Check if the output is the constant
     if (output === '6174') {
-      console.log(output);
-      return {operations: operations};
+      return operations;
     }
      // Else return to the function
-      console.log(output);
       return kaprekar_function(output, operations);
   };
   
+  
   // Calculate the Kaprekar value show how to arrive there
-  function calculateValue(){
+  const calculateValue = () => {
     
     //Clearing any errors
     setErrorStatus(false);
     setError("");
-    setKapIterations(0);
     
     if (numberVal.length !== 4) {
       setErrorStatus(true);
@@ -56,12 +57,24 @@ function App() {
       return;
     }
     
-    var kaprekarValue = kaprekar_function(numberVal);
-    console.log("Function Return: ", kaprekarValue);
-    console.log("Iterations", kapIterations);
-    
-    return kaprekarValue;
+    var kaprekarOps = kaprekar_function(numberVal);    
+    setOperations(kaprekarOps);    
   };
+  
+  const KapOperationsList = () => {
+    
+    return (
+      <List>
+        {operations.map(item => 
+          <ListItem>
+            <ListItemText
+              primary={item}
+            />
+          </ListItem>
+        )}
+      </List>
+    )
+  }
   
   return (
     <>
@@ -100,10 +113,11 @@ function App() {
             onChange={(event) => setNumberVal(event.target.value)}
           />
           <Button variant="outlined" onClick={() => calculateValue()}>Outlined</Button>
+          
         </Stack>
-
-
-                
+        
+        {operations.length ? (<KapOperationsList />) : (<>None</>)}
+        
       </Box>      
     </>
   );
