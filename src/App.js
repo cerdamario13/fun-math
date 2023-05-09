@@ -31,6 +31,8 @@ function App() {
     var numberLower = Number(numberValArrayAsc.join(''));
     var numberHigh = Number(numberValArrayDesc.join(''));
 
+    if (numberHigh.toString().length === 3) { numberHigh = numberHigh * 10 };
+
     var output = (numberHigh - numberLower).toString();
     
     operations.push(`${numberHigh} - ${numberLower} = ${output}`);
