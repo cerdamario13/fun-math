@@ -58,7 +58,21 @@ function App() {
     //Clearing any errors
     setErrorStatus(false);
     setError("");
+
+    //Check that at least two digits are different
+    var diffCheck = [];
+    for (var i=0; i<numberVal.toString().length; i++) {
+      if (!diffCheck.includes(numberVal.toString()[i])){
+        diffCheck.push(numberVal.toString()[i]);
+      }
+    }
     
+    if (diffCheck.length < 2) {
+      setErrorStatus(true);
+      setError("At least two digits must be different. Leading zeros are okay");
+      return;
+    }
+
     if (numberVal.length !== 4) {
       setErrorStatus(true);
       setError("Number must be four digits");
