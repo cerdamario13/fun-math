@@ -39,6 +39,14 @@ function App() {
     if (output === '6174') {
       return operations;
     }
+
+    // Safety in case infinite loop occurs
+    if (operations.length >= 200) {
+      console.log('Operations limit reached. Kaperkar Constant does not exist.');
+      return ['Operation Limit Reached'];
+
+    }
+
      // Else return to the function
       return kaprekar_function(output, operations);
   };
@@ -57,7 +65,13 @@ function App() {
       return;
     }
     
-    var kaprekarOps = kaprekar_function(numberVal);    
+    var kaprekarOps = kaprekar_function(numberVal);
+    
+    if (kaprekarOps[0] === 'Operation Limit Reached') {
+      setErrorStatus(true);
+      setError("Kaperkar value does not exist for that number.");
+    }
+    
     setOperations(kaprekarOps);    
   };
   
