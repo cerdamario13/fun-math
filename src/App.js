@@ -53,6 +53,14 @@ function App() {
       return kaprekar_function(output, operations);
   };
   
+  //clear the errors and operations
+  const clearOperations = () => {
+    setErrorStatus(false);
+    setError("");
+    setOperations([]);
+    setNumberVal("");
+    return;
+  }
   
   // Calculate the Kaprekar value show how to arrive there
   const calculateValue = () => {
@@ -143,6 +151,7 @@ function App() {
             onChange={(event) => setNumberVal(event.target.value)}
           />
           <Button variant="outlined" onClick={() => calculateValue()}>Outlined</Button>
+          <Button variant="outlined" onClick={() => clearOperations()}>Clear</Button>
           
         </Stack>
         
