@@ -16,6 +16,8 @@ function App() {
   const [error, setError] = useState("");
   const [errorStatus, setErrorStatus] = useState(false);
   const [operations, setOperations] = useState([]);
+  const [startValue, setStartValue] = useState(1234);
+  const [numberCount, setNumberCount] = useState(100);
 
   
   // Kaprekar Constant function
@@ -56,7 +58,7 @@ function App() {
   //clear the errors and operations
   const clearOperations = () => {
     setErrorStatus(false);
-    setError("");
+    setError("")
     setOperations([]);
     setNumberVal("");
     return;
@@ -144,13 +146,13 @@ function App() {
             error={errorStatus}
             required
             InputLabelProps={{ shrink: true }}
-            id="outlined-required"
+            id="inputNumber"
             label="Enter a Value"
             value={numberVal}
             type='number'
             onChange={(event) => setNumberVal(event.target.value)}
           />
-          <Button variant="outlined" onClick={() => calculateValue()}>Outlined</Button>
+          <Button variant="outlined" onClick={() => calculateValue()}>Calculate</Button>
           <Button variant="outlined" onClick={() => clearOperations()}>Clear</Button>
           
         </Stack>
@@ -163,6 +165,30 @@ function App() {
 
         ) : (<></>)}
         
+        <Typography variant="h6">
+          Plot a range
+        </Typography>
+        <p>Enter a range of numbers to see the Kaprekar number of iterations</p>
+        <TextField
+          required
+          InputLabelProps={{ shrink: true }}
+          id="startNumber"
+          label="Start Value"
+          value={startValue}
+          type='number'
+          onChange={(event) => setStartValue(event.target.value)}
+          style={{width: '100px'}}
+        />
+        <TextField 
+          required
+          InputLabelProps={{ shrink: true }}
+          id="numbersToAdd"
+          label="Number Count"
+          type="number"
+          value={numberCount}
+          onChange={(event) => setNumberCount(event.target.value)}
+          style={{width: '100px'}}
+        />
       </Box>      
     </>
   );
