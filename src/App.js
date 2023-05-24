@@ -114,6 +114,10 @@ function App() {
         )}
       </List>
     )
+  };
+
+  const plotRange = () => {
+    console.log("Hello");
   }
   
   return (
@@ -169,26 +173,30 @@ function App() {
           Plot a range
         </Typography>
         <p>Enter a range of numbers to see the Kaprekar number of iterations</p>
-        <TextField
-          required
-          InputLabelProps={{ shrink: true }}
-          id="startNumber"
-          label="Start Value"
-          value={startValue}
-          type='number'
-          onChange={(event) => setStartValue(event.target.value)}
-          style={{width: '100px'}}
-        />
-        <TextField 
-          required
-          InputLabelProps={{ shrink: true }}
-          id="numbersToAdd"
-          label="Number Count"
-          type="number"
-          value={numberCount}
-          onChange={(event) => setNumberCount(event.target.value)}
-          style={{width: '100px'}}
-        />
+
+        <Stack spacing={2} direction="row">
+          <TextField
+            required
+            InputLabelProps={{ shrink: true }}
+            id="startNumber"
+            label="Start Value"
+            value={startValue}
+            type='number'
+            onChange={(event) => setStartValue(event.target.value)}
+            style={{width: '100px'}}
+          />
+          <TextField 
+            required
+            InputLabelProps={{ shrink: true }}
+            id="numbersToAdd"
+            label="Number Count"
+            type="number"
+            value={numberCount}
+            onChange={(event) => setNumberCount(event.target.value)}
+            style={{width: '100px'}}
+          />
+          <Button variant='outlined' onClick={() => plotRange()} >Plot Range</Button>
+        </Stack>
       </Box>      
     </>
   );
