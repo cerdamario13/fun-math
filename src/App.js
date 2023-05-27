@@ -24,7 +24,7 @@ function App() {
   const kaprekar_function = (value, operations = []) => {
     // sorting numbers
     let numberValArrayAsc = []
-    for (var i=0; i<numberVal.length; i++) {
+    for (var i=0; i<value.length; i++) {
       numberValArrayAsc = numberValArrayAsc.concat(value[i]);
     }
     numberValArrayAsc.sort();
@@ -117,7 +117,17 @@ function App() {
   };
 
   const plotRange = () => {
-    console.log("Hello");
+    
+    var numbersToAdd = startValue;
+    var numberToAddArray = [];
+    for (var i=0; i<=numberCount; i++) {
+      numberToAddArray.push(numbersToAdd++);
+    }    
+    console.log(startValue);
+    
+    //Try and calculate Kaprekar number of iterations
+    console.log(kaprekar_function(startValue.toString()));
+    
   }
   
   return (
