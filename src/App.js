@@ -16,8 +16,10 @@ function App() {
   const [error, setError] = useState("");
   const [errorStatus, setErrorStatus] = useState(false);
   const [operations, setOperations] = useState([]);
+  
   const [startValue, setStartValue] = useState(1234);
   const [numberCount, setNumberCount] = useState(100);
+  // const [plotValuesArray, setPlotValuesArray] = useState([]);
 
   
   // Kaprekar Constant function
@@ -119,15 +121,16 @@ function App() {
   const plotRange = () => {
     
     var numbersToAdd = startValue;
-    var numberToAddArray = [];
+    var numberIterations = [];
+    var numberValues = [];
     for (var i=0; i<=numberCount; i++) {
-      numberToAddArray.push(numbersToAdd++);
-    }    
-    console.log(startValue);
+      var values = numbersToAdd++;
+      numberValues.push(values);
+      numberIterations.push(kaprekar_function(values.toString()).length);
+    }
     
-    //Try and calculate Kaprekar number of iterations
-    console.log(kaprekar_function(startValue.toString()));
-    
+    console.log(numberValues);
+    console.log(numberIterations);    
   }
   
   return (
