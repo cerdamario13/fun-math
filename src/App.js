@@ -19,7 +19,7 @@ function App() {
   
   const [startValue, setStartValue] = useState(1234);
   const [numberCount, setNumberCount] = useState(100);
-  // const [plotValuesArray, setPlotValuesArray] = useState([]);
+  const [plotData, setPlotData] = useState([[]]);
 
   
   // Kaprekar Constant function
@@ -122,14 +122,23 @@ function App() {
     
     var numbersToAdd = startValue;
     var numberIterations = [];
-    var numberValues = [];
+    // var numberValues = [];
     for (var i=0; i<=numberCount; i++) {
       var values = numbersToAdd++;
-      numberValues.push(values);
-      numberIterations.push(kaprekar_function(values.toString()).length);
-    }
+      
+      //Try and calculate kaprekar value or return 0
+      try{
+        numberIterations.push([values, kaprekar_function(values.toString()).length]);
+        // numberValues.push(values);
+        // numberIterations.push(kaprekar_function(values.toString()).length);       
+      } catch {
+        numberIterations.push([values, 0]);
+        // numberValues.push(values);
+        // numberIterations.push(0);
+      }
+    };
+    setPlotData(numberIterations);
     
-    console.log(numberValues);
     console.log(numberIterations);    
   }
   
