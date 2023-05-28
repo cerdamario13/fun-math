@@ -9,6 +9,8 @@ import Alert from '@mui/material/Alert';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
+
 
 function App() {
   
@@ -128,7 +130,9 @@ function App() {
       
       //Try and calculate kaprekar value or return 0
       try{
-        numberIterations.push([values, kaprekar_function(values.toString()).length]);
+        numberIterations.push(
+          {"value": values, "iterations": kaprekar_function(values.toString()).length}
+          );
         // numberValues.push(values);
         // numberIterations.push(kaprekar_function(values.toString()).length);       
       } catch {
@@ -219,6 +223,16 @@ function App() {
           />
           <Button variant='outlined' onClick={() => plotRange()} >Plot Range</Button>
         </Stack>
+
+        <LineChart width={1000} height={350} data={plotData}>
+            <Line type="monotone" dataKey={"iterations"} stroke="#2196F3" strokeWidth={3}></Line>
+            <CartesianGrid stroke="#ccc"></CartesianGrid>
+            <XAxis dataKey="value"></XAxis>
+            <YAxis></YAxis>
+            <Tooltip></Tooltip>
+            <Legend></Legend>
+          </LineChart>
+
       </Box>      
     </>
   );
