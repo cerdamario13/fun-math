@@ -146,8 +146,11 @@ function App() {
     setShowPlot(true); 
   }
 
-  console.log(plotData);
-  console.log(plotData === [{}]);
+  const clearRangePlot = () => {
+    setPlotData([{}]);
+    setShowPlot(false);
+  }
+
   
   return (
     <>
@@ -225,6 +228,7 @@ function App() {
             style={{width: '100px'}}
           />
           <Button variant='outlined' onClick={() => plotRange()} >Plot Range</Button>
+          <Button variant='outlined' onClick={() => clearRangePlot()} >Clear Plot</Button>
         </Stack>
 
         <Stack spacing={2}>
