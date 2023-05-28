@@ -21,7 +21,8 @@ function App() {
   
   const [startValue, setStartValue] = useState(1234);
   const [numberCount, setNumberCount] = useState(100);
-  const [plotData, setPlotData] = useState([[]]);
+  const [plotData, setPlotData] = useState([{}]);
+  const [showPlot, setShowPlot] = useState(false);
 
   
   // Kaprekar Constant function
@@ -141,10 +142,12 @@ function App() {
         // numberIterations.push(0);
       }
     };
-    setPlotData(numberIterations);
-    
-    console.log(numberIterations);    
+    setPlotData(numberIterations);   
+    setShowPlot(true); 
   }
+
+  console.log(plotData);
+  console.log(plotData === [{}]);
   
   return (
     <>
@@ -224,14 +227,24 @@ function App() {
           <Button variant='outlined' onClick={() => plotRange()} >Plot Range</Button>
         </Stack>
 
-        <LineChart width={1000} height={350} data={plotData}>
-            <Line type="monotone" dataKey={"iterations"} stroke="#2196F3" strokeWidth={3}></Line>
-            <CartesianGrid stroke="#ccc"></CartesianGrid>
-            <XAxis dataKey="value"></XAxis>
-            <YAxis></YAxis>
-            <Tooltip></Tooltip>
-            <Legend></Legend>
-          </LineChart>
+        <Stack spacing={2}>
+
+          {showPlot ? (
+              <LineChart width={1000} height={350} data={plotData}>
+                <Line type="monotone" dataKey={"iterations"} stroke="#2196F3" strokeWidth={3}></Line>
+                <CartesianGrid stroke="#ccc"></CartesianGrid>
+                <XAxis dataKey="value"></XAxis>
+                <YAxis></YAxis>
+                <Tooltip></Tooltip>
+                <Legend></Legend>
+              </LineChart>
+            ) : (
+              <></>
+            )}
+
+        </Stack>
+
+
 
       </Box>      
     </>
