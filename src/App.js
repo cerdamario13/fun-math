@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -201,50 +202,67 @@ function App() {
 
         ) : (<></>)}
         
-        <Typography variant="h6">
-          Plot a range
-        </Typography>
-        <p>Enter a range of numbers to see the Kaprekar number of iterations</p>
+        <Stack spacing={2} paddingTop='20px'>
 
-        <Stack spacing={2} direction="row">
-          <TextField
-            required
-            InputLabelProps={{ shrink: true }}
-            id="startNumber"
-            label="Start Value"
-            value={startValue}
-            type='number'
-            onChange={(event) => setStartValue(event.target.value)}
-            style={{width: '100px'}}
-          />
-          <TextField 
-            required
-            InputLabelProps={{ shrink: true }}
-            id="numbersToAdd"
-            label="Number Count"
-            type="number"
-            value={numberCount}
-            onChange={(event) => setNumberCount(event.target.value)}
-            style={{width: '100px'}}
-          />
-          <Button variant='outlined' onClick={() => plotRange()} >Plot Range</Button>
-          <Button variant='outlined' onClick={() => clearRangePlot()} >Clear Plot</Button>
-        </Stack>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+              >
+                <Typography variant="h6">
+                  Plot a range
+                </Typography>
 
-        <Stack spacing={2}>
+            </AccordionSummary>
+            <AccordionDetails>
 
-          {showPlot ? (
-              <LineChart width={1000} height={350} data={plotData}>
-                <Line type="monotone" dataKey={"iterations"} stroke="#2196F3" strokeWidth={3}></Line>
-                <CartesianGrid stroke="#ccc"></CartesianGrid>
-                <XAxis dataKey="value"></XAxis>
-                <YAxis></YAxis>
-                <Tooltip></Tooltip>
-                <Legend></Legend>
-              </LineChart>
-            ) : (
-              <></>
-            )}
+            <p>Enter a range of numbers to see the Kaprekar number of iterations</p>
+
+              <Stack spacing={2} direction="row">
+                <TextField
+                  required
+                  InputLabelProps={{ shrink: true }}
+                  id="startNumber"
+                  label="Start Value"
+                  value={startValue}
+                  type='number'
+                  onChange={(event) => setStartValue(event.target.value)}
+                  style={{width: '100px'}}
+                />
+                <TextField 
+                  required
+                  InputLabelProps={{ shrink: true }}
+                  id="numbersToAdd"
+                  label="Number Count"
+                  type="number"
+                  value={numberCount}
+                  onChange={(event) => setNumberCount(event.target.value)}
+                  style={{width: '150px'}}
+                />
+                <Button variant='outlined' onClick={() => plotRange()} >Plot Range</Button>
+                <Button variant='outlined' onClick={() => clearRangePlot()} >Clear Plot</Button>
+              </Stack>
+
+              <Stack spacing={2}>
+
+                {showPlot ? (
+                    <LineChart width={1000} height={350} data={plotData}>
+                      <Line type="monotone" dataKey={"iterations"} stroke="#2196F3" strokeWidth={3}></Line>
+                      <CartesianGrid stroke="#ccc"></CartesianGrid>
+                      <XAxis dataKey="value"></XAxis>
+                      <YAxis></YAxis>
+                      <Tooltip></Tooltip>
+                      <Legend></Legend>
+                    </LineChart>
+                  ) : (
+                    <></>
+                  )}
+
+              </Stack>
+
+            </AccordionDetails>
+          </Accordion>
 
         </Stack>
 
