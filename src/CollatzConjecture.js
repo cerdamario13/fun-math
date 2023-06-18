@@ -2,10 +2,16 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
 import { Button, Stack, TextField, Typography } from '@mui/material';
+import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
+
 
 const CollatzConjecture = () => {
   
   const [numberVal, setNumberVal] = useState("");
+  
+  const [plotData, setPlotData] = useState([{}]);
+  const [showPlot, setShowPlot] = useState(false);
+  
   
   //Collatz Conjecture recursive function
   const collatz_func = (value, operations = []) => {
@@ -34,13 +40,25 @@ const CollatzConjecture = () => {
   const calculateValue = () => {
     
     var CollatzOps = collatz_func(numberVal);
-    console.log(CollatzOps);
+    setShowPlot(true);
     
+    //set the plotting data
+    var iterations = [];
+    for (var i=0; i<=CollatzOps.length; i++) {
+      iterations.push(
+        {"value": CollatzOps[i]}
+      )
+    }
+    setPlotData(iterations);
   };
+  
   
   const clearOperations = () => {
     setNumberVal("");
+    setPlotData({});
+    setShowPlot(false);
   }
+  
   
   return (
     <>
@@ -74,9 +92,25 @@ const CollatzConjecture = () => {
             type='number'
             onChange={(event) => setNumberVal(event.target.value)}
           />
-          <Button variant='outlined' onClick={() => calculateValue()}>Calculate</Button>
+          <Button variant='outlined' onClick={() => calculateValue()}>Plot</Button>
           <Button variant='outlined' onClick={() => clearOperations()}>Clear</Button>
-          
+        </Stack>
+        
+        <Stack spacing={2}>
+          {showPlot ? (
+            
+            <LineChart width={1000} height={350} data={plotData}>
+            <Line type="monotone" dataKey={"value"} stroke="#2196F3" strokeWidth={3}></Line>
+            <CartesianGrid stroke="#ccc"></CartesianGrid>
+            <XAxis dataKey="value"></XAxis>
+            <YAxis></YAxis>
+            <Tooltip></Tooltip>
+            <Legend></Legend>
+          </LineChart>
+          ) : (
+            <></>
+          )}
+                    
         </Stack>
         
       </Box>
