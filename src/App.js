@@ -12,6 +12,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
 
+import CollatzConjecture from './CollatzConjecture';
+
 
 function App() {
   
@@ -268,7 +270,10 @@ function App() {
 
 
 
-      </Box>      
+      </Box>
+      
+      <CollatzConjecture />
+      
     </>
   );
 }
