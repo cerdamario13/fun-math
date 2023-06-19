@@ -100,7 +100,7 @@ const CollatzConjecture = () => {
         noValidate
         autoComplete="off"
       >
-        <Stack direction="row"spacing={2}>
+        <Stack direction="row" spacing={2}>
           <Typography variant='h2'>
             Collatz Conjecture
           </Typography>

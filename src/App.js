@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Typography, IconButton } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -11,6 +11,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
+import { InfoOutlined } from '@mui/icons-material';
 
 import CollatzConjecture from './CollatzConjecture';
 
@@ -153,7 +154,10 @@ function App() {
     setPlotData([{}]);
     setShowPlot(false);
   }
-
+  
+  const handleInfoClick = () => {
+    window.open("https://en.wikipedia.org/wiki/6174", "_blank");
+  }
   
   return (
     <>
@@ -170,9 +174,17 @@ function App() {
         noValidate
         autoComplete="off"
       >
-        <Typography variant='h2'>
-          Kaprekar Constant
-        </Typography>
+        
+        <Stack direction="row" spacing={2}>
+          <Typography variant='h2'>
+            Kaprekar Constant
+          </Typography>
+          
+          <IconButton onClick={handleInfoClick}>
+            <InfoOutlined />
+          </IconButton> 
+        </Stack>
+        
         <p>
         Kaprekar constant, or 6174, is a constant that arises when we take a 4-digit integer, form the largest and smallest numbers from its digits, and then subtract these two numbers. Continuing with this process of forming and subtracting, we will always arrive at the number 6174.
         </p>
