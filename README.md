@@ -10,10 +10,14 @@ This GitHub repo is meant to showcase the intriguing nature of mathematical conc
 ### Kaperkar Constant
 Kaprekar constant, or 6174, is a constant that arises when we take a 4-digit integer, form the largest and smallest numbers from its digits, and then subtract these two numbers. Continuing with this process of forming and subtracting, we will always arrive at the number 6174.
 
-Example of value **1237**
+<details>
+  <summary>Kaperkar Examples</summary>
+  Example of value **1237**
 
-![](img/Kaperkar%20Example.png)
+  ![](img/Kaperkar%20Example.png)
 
-Plot showing Kaperkar number of iterations from **1237 to 1337**
+  Plot showing Kaperkar number of iterations from **1237 to 1337**
 
-![](img/kaperkar%20plot%20sample.png)
+  ![](img/kaperkar%20plot%20sample.png)
+</details>
+
