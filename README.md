@@ -12,6 +12,7 @@ Kaprekar constant, or 6174, is a constant that arises when we take a 4-digit int
 
 <details open>
   <summary>Kaperkar Examples</summary>
+  
   Example of value **1237**
 
   ![](img/Kaperkar%20Example.png)
