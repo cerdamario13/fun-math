@@ -133,15 +133,17 @@ const CollatzConjecture = () => {
         
         <Stack spacing={2}>
           {showPlot ? (
-            
+          <>
+            <Typography variant='subtitle1'>{"Operations: " + plotData.length}</Typography>
             <LineChart width={1250} height={350} data={plotData}>
-            <Line type="monotone" dataKey={"value"} stroke="#2196F3" strokeWidth={3}></Line>
-            <CartesianGrid stroke="#ccc"></CartesianGrid>
-            <XAxis dataKey="value"></XAxis>
-            <YAxis></YAxis>
-            <Tooltip></Tooltip>
-            <Legend></Legend>
-          </LineChart>
+              <Line type="monotone" dataKey={"value"} stroke="#2196F3" strokeWidth={3}></Line>
+              <CartesianGrid stroke="#ccc"></CartesianGrid>
+              <XAxis dataKey="value"></XAxis>
+              <YAxis></YAxis>
+              <Tooltip></Tooltip>
+              <Legend></Legend>
+            </LineChart>
+          </>
           ) : (
             <></>
           )}
