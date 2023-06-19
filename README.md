@@ -10,7 +10,7 @@ This GitHub repo is meant to showcase the intriguing nature of mathematical conc
 ### Kaperkar Constant
 Kaprekar constant, or 6174, is a constant that arises when we take a 4-digit integer, form the largest and smallest numbers from its digits, and then subtract these two numbers. Continuing with this process of forming and subtracting, we will always arrive at the number 6174.
 
-<details>
+<details open>
   <summary>Kaperkar Examples</summary>
   Example of value **1237**
 
@@ -26,7 +26,7 @@ Kaprekar constant, or 6174, is a constant that arises when we take a 4-digit int
 ### Collatz Conjecture
 The Collatz conjecture is one of the most famous unsolved problems in mathematics. The conjecture asks whether repeating two simple arithmetic operations will eventually transform every positive integer into 1. It concerns sequences of integers in which each term is obtained from the previous term as follows: if the previous term is even, the next term is one half of the previous term. If the previous term is odd, the next term is 3 times the previous term plus 1. The conjecture is that these sequences always reach 1, no matter which positive integer is chosen to start the sequence.
 
-<details>
+<details open>
   <summary>Collatz Conjecture Examples</summary>
   
   Example of value **27**
