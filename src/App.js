@@ -8,9 +8,9 @@ function App() {
   
   return (
     <>
+      <TinkerbellMap />
       <KaperkarConstant />
       <CollatzConjecture />
-      <TinkerbellMap />
     </>
   );
   
