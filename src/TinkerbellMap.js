@@ -3,7 +3,7 @@ import { useState } from "react";
 import { InfoOutlined } from "@mui/icons-material";
 import { Box, IconButton, Typography, Stack, TextField } from "@mui/material";
 import Button from '@mui/material/Button';
-import { CartesianGrid, ResponsiveContainer, ScatterChart, XAxis, YAxis, Scatter } from "recharts";
+import { CartesianGrid, ResponsiveContainer, ScatterChart, XAxis, YAxis, Scatter, ZAxis } from "recharts";
 
 const TinkerbellMap = () => {
   
@@ -165,8 +165,9 @@ const TinkerbellMap = () => {
               }}
             >
             <CartesianGrid />
-            <XAxis type="number" dataKey="x"/>
+            <XAxis type="number" dataKey="x" />
             <YAxis type="number" dataKey="y" />
+            <ZAxis type="number" range={[1]} />
             <Scatter name="A school" data={plotData} fill="#2196F3" />
           </ScatterChart>                  
         </ResponsiveContainer>
