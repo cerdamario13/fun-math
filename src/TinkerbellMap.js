@@ -3,6 +3,7 @@ import { useState } from "react";
 import { InfoOutlined } from "@mui/icons-material";
 import { Box, IconButton, Typography, Stack, TextField } from "@mui/material";
 import Button from '@mui/material/Button';
+import { CartesianGrid, ResponsiveContainer, ScatterChart, XAxis, YAxis, Scatter } from "recharts";
 
 const TinkerbellMap = () => {
   
@@ -40,6 +41,7 @@ const TinkerbellMap = () => {
     
     var data = dynamicSystem(xValue, yValue);
     console.log(data);
+    setPlotData(data);
     
   };
   
@@ -149,6 +151,26 @@ const TinkerbellMap = () => {
         <Stack  spacing={2} direction="row">
           <Button variant="outlined" onClick={() => plotPlot()}>Plot</Button>
           <Button variant="outlined">Clear</Button>
+        </Stack>
+        
+        <Stack spacing={2} >
+          
+        <ResponsiveContainer width="100%" height={400}>
+          <ScatterChart
+              margin={{
+                top: 20,
+                right: 20,
+                bottom: 20,
+                left: 20,
+              }}
+            >
+            <CartesianGrid />
+            <XAxis type="number" dataKey="x"/>
+            <YAxis type="number" dataKey="y" />
+            <Scatter name="A school" data={plotData} fill="#2196F3" />
+          </ScatterChart>                  
+        </ResponsiveContainer>
+  
         </Stack>
                 
       </Box>
