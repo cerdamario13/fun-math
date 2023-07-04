@@ -111,8 +111,16 @@ const CollatzConjecture = () => {
         </Stack>
         
         <p>
-          The Collatz conjecture is one of the most famous unsolved problems in mathematics. The conjecture asks whether repeating two simple arithmetic operations will eventually transform every positive integer into 1. It concerns sequences of integers in which each term is obtained from the previous term as follows: if the previous term is even, the next term is one half of the previous term. If the previous term is odd, the next term is 3 times the previous term plus 1. The conjecture is that these sequences always reach 1, no matter which positive integer is chosen to start the sequence.
+          The Collatz Conjecture is a mathematical puzzle that involves starting with any positive whole number and following a specific set of rules until you reach the number 1.
         </p>
+        <p>Here's how it works:</p>
+        <ol>
+          <li>Start with any positive whole number.</li>
+          <li>If the number is even, divide it by 2.</li>
+          <li>If the number is odd, multiply it by 3 and add 1.</li>
+          <li>Take the resulting number and repeat the process, applying the same rules.</li>
+        </ol>
+        <p>The goal is to keep applying these rules to the resulting numbers until you eventually reach 1. The conjecture states that, no matter which positive whole number you start with, you will always eventually reach 1.</p>
         
         {errorStatus && <Alert severity='error'>{error}</Alert>}
         
