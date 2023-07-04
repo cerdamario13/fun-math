@@ -49,7 +49,7 @@ const TinkerbellMap = () => {
     setError("");
 
     // Check that iterations are 0 < X <= 10000
-    if (iterations <= 0 || iterations >= 10_001) {
+    if (iterations <= 0 || iterations >= 10001) {
       setError("Values must be greater than 0 and less than 10,000");
       setErrorStatus(true);
       return;
@@ -75,7 +75,7 @@ const TinkerbellMap = () => {
     setBValue(-0.6013);
     setCValue(2.0);
     setDValue(0.50);
-    setIterations(1_000);
+    setIterations(1000);
     setShowPlot(false);
     window.location.reload(false);
   }
