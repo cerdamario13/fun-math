@@ -10,7 +10,7 @@ import Alert from '@mui/material/Alert';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
+import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 import { InfoOutlined } from '@mui/icons-material';
 
 
@@ -259,14 +259,27 @@ function KaperkarConstant() {
               <Stack spacing={2}>
 
                 {showPlot ? (
+                  <ResponsiveContainer width="100%" height={400}>
                     <LineChart width={1000} height={350} data={plotData}>
-                      <Line type="monotone" dataKey={"iterations"} stroke="#2196F3" strokeWidth={3}></Line>
+                      <Line
+                        type="monotone"
+                        dataKey={"iterations"}
+                        stroke="#2196F3"
+                        strokeWidth={3}
+                        margin={{
+                          top: 5,
+                          right: 30,
+                          left: 20,
+                          bottom: 5,
+                        }}
+                        ></Line>
                       <CartesianGrid stroke="#ccc"></CartesianGrid>
                       <XAxis dataKey="value"></XAxis>
                       <YAxis></YAxis>
                       <Tooltip></Tooltip>
                       <Legend></Legend>
                     </LineChart>
+                  </ResponsiveContainer>
                   ) : (
                     <></>
                   )}
