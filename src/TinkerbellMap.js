@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { InfoOutlined } from "@mui/icons-material";
-import { Box, IconButton, Typography, Stack, TextField } from "@mui/material";
+import { Box, IconButton, Typography, Stack, TextField, Alert } from "@mui/material";
 import Button from '@mui/material/Button';
 import { CartesianGrid, ResponsiveContainer, ScatterChart, XAxis, YAxis, Scatter, ZAxis } from "recharts";
 
@@ -15,29 +15,44 @@ const TinkerbellMap = () => {
   const [dValue, setDValue] = useState(0.50);
   const [iterations, setIterations] = useState(1000);
   const [plotData, setPlotData] = useState([{}]);
+
+  const [error, setError] = useState("");
+  const [errorStatus, setErrorStatus] = useState(false);
   
   const handleInfoClick = () => {
     window.open("https://en.wikipedia.org/wiki/Tinkerbell_map", "_blank");
   };
   
-  const dynamicSystem = (x, y, data = [], iter=0) => {
+  const dynamicSystem = (x, y) => {
+    var data = [];
+    var iter = 0;
     
-    // Define the dynamical system
-    var varX = x**2 - y**2 + aValue*x + bValue*y;
-    var varY = 2*x*y + cValue*x + dValue*y;
-    data.push({'x': varX, 'y': varY});
-    
-    iter += 1;
-    
-    if (iter >= iterations) {
-      return data
-    } else {
-      return dynamicSystem(varX, varY, data, iter);
+    while (iter < iterations) {
+      var varX = x**2 - y**2 + aValue * x + bValue * y;
+      var varY = 2 * x * y + cValue * x + dValue * y;
+      
+      data.push({ 'x': varX, 'y': varY });
+      
+      x = varX;
+      y = varY;
+      iter += 1;
     }
     
-  }
+    return data;
+  };
   
   const plotPlot = () => {
+
+    //clear any errors
+    setErrorStatus(false);
+    setError("");
+
+    // Check that iterations are 0 < X <= 10000
+    if (iterations <= 0 || iterations >= 10_001) {
+      setError("Values must be greater than 0 and less than 10,000");
+      setErrorStatus(true);
+      return;
+    }
     
     var data = dynamicSystem(xValue, yValue);
     console.log(data);
@@ -46,7 +61,19 @@ const TinkerbellMap = () => {
   };
 
   const clearPlot = () => {
+
+    //clear all errors
+    setError("");
+    setErrorStatus(false);
     setPlotData({});
+    //Setting all of the values back to starting points
+    setXValue(-0.72);
+    setYValue(-0.64);
+    setAValue(-0.9);
+    setBValue(-0.6013);
+    setCValue(-2.0);
+    setDValue(0.50);
+    setIterations(1_000);
   }
   
   return (
@@ -78,6 +105,8 @@ const TinkerbellMap = () => {
         In mathematics, a dynamical system is a system in which a function describes the time dependence of a point in an ambient space, such as in a parametric curve.
         The Tinkerbell map is a two-dimensional discrete dynamical system that exhibits chaotic behavior. It is named after its resemblance to the shape of the Tinker Bell fairy from Disney's Peter Pan. The Tinkerbell map is defined by a set of iterative equations that determine the evolution of points in its phase space.
         </p>
+
+        {errorStatus && <Alert severity='error'>{error}</Alert>}
                 
         <Stack direction="row">
           <TextField
@@ -171,7 +200,7 @@ const TinkerbellMap = () => {
             <CartesianGrid />
             <XAxis type="number" dataKey="x" />
             <YAxis type="number" dataKey="y" />
-            <ZAxis type="number" range={[1]} />
+            <ZAxis type="number" range={[8]} />
             <Scatter name="A school" data={plotData} fill="#2196F3" />
           </ScatterChart>                  
         </ResponsiveContainer>
