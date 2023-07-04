@@ -44,6 +44,10 @@ const TinkerbellMap = () => {
     setPlotData(data);
     
   };
+
+  const clearPlot = () => {
+    setPlotData({});
+  }
   
   return (
     <>
@@ -150,7 +154,7 @@ const TinkerbellMap = () => {
         
         <Stack  spacing={2} direction="row">
           <Button variant="outlined" onClick={() => plotPlot()}>Plot</Button>
-          <Button variant="outlined">Clear</Button>
+          <Button variant="outlined" onClick={() => clearPlot()}>Clear</Button>
         </Stack>
         
         <Stack spacing={2} >
