@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
 import { Alert, Button, IconButton, Stack, TextField, Typography } from '@mui/material';
-import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
+import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 import { InfoOutlined } from '@mui/icons-material';
 
 
@@ -135,14 +135,27 @@ const CollatzConjecture = () => {
           {showPlot ? (
           <>
             <Typography variant='subtitle1'>{"Operations: " + plotData.length}</Typography>
-            <LineChart width={1250} height={350} data={plotData}>
-              <Line type="monotone" dataKey={"value"} stroke="#2196F3" strokeWidth={3}></Line>
-              <CartesianGrid stroke="#ccc"></CartesianGrid>
-              <XAxis dataKey="value"></XAxis>
-              <YAxis></YAxis>
-              <Tooltip></Tooltip>
-              <Legend></Legend>
-            </LineChart>
+
+            <ResponsiveContainer width="100%" height={400}>
+              <LineChart
+                width={500}
+                height={300}
+                data={plotData}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+                >
+                <Line type="monotone" dataKey={"value"} stroke="#2196F3" strokeWidth={3}></Line>
+                <CartesianGrid stroke="#ccc"></CartesianGrid>
+                <XAxis dataKey="value"></XAxis>
+                <YAxis></YAxis>
+                <Tooltip></Tooltip>
+                <Legend></Legend>
+              </LineChart>
+            </ResponsiveContainer>
           </>
           ) : (
             <></>
