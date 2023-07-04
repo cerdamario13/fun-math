@@ -15,6 +15,7 @@ const TinkerbellMap = () => {
   const [dValue, setDValue] = useState(0.50);
   const [iterations, setIterations] = useState(1000);
   const [plotData, setPlotData] = useState([{}]);
+  const [showPlot, setShowPlot] = useState(false);
 
   const [error, setError] = useState("");
   const [errorStatus, setErrorStatus] = useState(false);
@@ -57,6 +58,7 @@ const TinkerbellMap = () => {
     var data = dynamicSystem(xValue, yValue);
     console.log(data);
     setPlotData(data);
+    setShowPlot(true);
     
   };
 
@@ -74,6 +76,7 @@ const TinkerbellMap = () => {
     setCValue(2.0);
     setDValue(0.50);
     setIterations(1_000);
+    setShowPlot(false);
     window.location.reload(false);
   }
   
@@ -188,24 +191,27 @@ const TinkerbellMap = () => {
         </Stack>
         
         <Stack spacing={2} >
-          
-        <ResponsiveContainer width="100%" height={400}>
-          <ScatterChart
-              margin={{
-                top: 20,
-                right: 20,
-                bottom: 20,
-                left: 20,
-              }}
-            >
-            <CartesianGrid />
-            <XAxis type="number" dataKey="x" />
-            <YAxis type="number" dataKey="y" />
-            <ZAxis type="number" range={[8]} />
-            <Scatter name="A school" data={plotData} fill="#2196F3" />
-          </ScatterChart>                  
-        </ResponsiveContainer>
-  
+        
+        {showPlot ? (
+          <ResponsiveContainer width="100%" height={400}>
+            <ScatterChart
+                margin={{
+                  top: 20,
+                  right: 20,
+                  bottom: 20,
+                  left: 20,
+                }}
+              >
+              <CartesianGrid />
+              <XAxis type="number" dataKey="x" />
+              <YAxis type="number" dataKey="y" />
+              <ZAxis type="number" range={[8]} />
+              <Scatter name="A school" data={plotData} fill="#2196F3" />
+            </ScatterChart>                  
+          </ResponsiveContainer>
+        ):(
+          <></>
+        )}  
         </Stack>
                 
       </Box>
