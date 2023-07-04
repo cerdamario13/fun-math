@@ -74,6 +74,7 @@ const TinkerbellMap = () => {
     setCValue(-2.0);
     setDValue(0.50);
     setIterations(1_000);
+    window.location.reload(false);
   }
   
   return (
