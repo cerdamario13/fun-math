@@ -69,9 +69,9 @@ const TinkerbellMap = () => {
     //Setting all of the values back to starting points
     setXValue(-0.72);
     setYValue(-0.64);
-    setAValue(-0.9);
+    setAValue(0.9);
     setBValue(-0.6013);
-    setCValue(-2.0);
+    setCValue(2.0);
     setDValue(0.50);
     setIterations(1_000);
     window.location.reload(false);
