@@ -5,15 +5,16 @@ import CollatzConjecture from "./CollatzConjecture";
 
 afterEach(cleanup)
     
-it("Ensure that the title is present", () => {
+it("Ensure that the main items are present", () => {
     render(<CollatzConjecture />);
     screen.getByText('Collatz Conjecture');
     expect(screen.getByText('Collatz Conjecture')).toBeInTheDocument();
+    
+    expect(screen.getByRole('spinbutton')).toBeInTheDocument();
+    
+    expect(screen.getByRole('button', {name: "Plot"})).toBeInTheDocument();
+    
+    expect(screen.getByRole('button', {name: "Clear"})).toBeInTheDocument();
 });
 
-it("Text input present", () => {
-    render(<CollatzConjecture />);
-    expect(screen.getByRole('spinbutton')).toBeInTheDocument();
-})
 
-    
