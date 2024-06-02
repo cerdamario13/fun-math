@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { Alert, Button, IconButton, Stack, TextField, Typography } from '@mui/material';
+import { IconButton, Stack, Typography } from '@mui/material';
 import { InfoOutlined } from '@mui/icons-material';
 
 export const CustomBox = (props) => {
