@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Alert, Button, Stack, TextField, Typography } from '@mui/material';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
+import { collatz_func } from '../maths/functions';
 
 export const CollatzConjecture = () => {
 
@@ -10,31 +11,7 @@ export const CollatzConjecture = () => {
   const [plotData, setPlotData] = React.useState([{}]);
   const [showPlot, setShowPlot] = React.useState(false);
   
-  
-  //Collatz Conjecture recursive function
-  const collatz_func = (value, operations = []) => {
     
-    var valueNum = Number(value);
-    
-    //break the function if the value is 1
-    if (valueNum === 1) {
-      operations.push(value);
-      return operations;
-    }
-    
-    if (valueNum % 2 === 0) {
-      //Even result
-      operations.push(valueNum);
-      return collatz_func(valueNum / 2, operations);
-      
-    } else {
-      // Odd result
-      operations.push(valueNum);
-      return collatz_func( (3 * valueNum) + 1, operations );
-    }
-    
-  }
-  
   const calculateValue = () => {
     
     //clear any errors

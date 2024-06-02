@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { CustomBox } from './layouts/CustomBox';
-import { CollatzConjecture } from './maths/CollatzConjecture';
-import { KaperkarConstant } from './maths/KaperkarConstant';
-import { TinkerbellMap } from './maths/TinkerbellMap';
+import { CollatzConjecture } from './elements/CollatzConjecture';
+import { KaperkarConstant } from './elements/KaperkarConstant';
+import { TinkerbellMap } from './elements/TinkerbellMap';
 
 function App() {
 

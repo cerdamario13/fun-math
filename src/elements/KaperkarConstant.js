@@ -15,6 +15,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
+import { kaprekar_function } from '../maths/functions';
 
 export const KaperkarConstant = () => {
   const [numberVal, setNumberVal] = useState("");
@@ -27,44 +28,7 @@ export const KaperkarConstant = () => {
   const [plotData, setPlotData] = useState([{}]);
   const [showPlot, setShowPlot] = useState(false);
 
-  // Kaprekar Constant function
-  const kaprekar_function = (value, operations = []) => {
-    // sorting numbers
-    let numberValArrayAsc = [];
-    for (var i = 0; i < value.length; i++) {
-      numberValArrayAsc = numberValArrayAsc.concat(value[i]);
-    }
-    numberValArrayAsc.sort();
-    var numberValArrayDesc = numberValArrayAsc.map((x) => x).reverse();
-
-    var numberLower = Number(numberValArrayAsc.join(""));
-    var numberHigh = Number(numberValArrayDesc.join(""));
-
-    if (numberHigh.toString().length === 3) {
-      numberHigh = numberHigh * 10;
-    }
-
-    var output = (numberHigh - numberLower).toString();
-
-    operations.push(`${numberHigh} - ${numberLower} = ${output}`);
-
-    // Check if the output is the constant
-    if (output === "6174") {
-      return operations;
-    }
-
-    // Safety in case infinite loop occurs
-    if (operations.length >= 200) {
-      console.log(
-        "Operations limit reached. Kaperkar Constant does not exist."
-      );
-      return ["Operation Limit Reached"];
-    }
-
-    // Else return to the function
-    return kaprekar_function(output, operations);
-  };
-
+  
   //clear the errors and operations
   const clearOperations = () => {
     setErrorStatus(false);
