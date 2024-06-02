@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, Button, IconButton, Stack, TextField, Typography } from '@mui/material';
+import { Alert, Button, Stack, TextField, Typography } from '@mui/material';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 
 export const CollatzConjecture = () => {
@@ -17,12 +17,12 @@ export const CollatzConjecture = () => {
     var valueNum = Number(value);
     
     //break the function if the value is 1
-    if (valueNum == 1) {
+    if (valueNum === 1) {
       operations.push(value);
       return operations;
     }
     
-    if (valueNum % 2 == 0) {
+    if (valueNum % 2 === 0) {
       //Even result
       operations.push(valueNum);
       return collatz_func(valueNum / 2, operations);

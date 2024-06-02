@@ -26,10 +26,6 @@ export const TinkerbellMap = () => {
   const [error, setError] = useState("");
   const [errorStatus, setErrorStatus] = useState(false);
 
-  const handleInfoClick = () => {
-    window.open("https://en.wikipedia.org/wiki/Tinkerbell_map", "_blank");
-  };
-
   const dynamicSystem = (x, y) => {
     var data = [];
     var iter = 0;
