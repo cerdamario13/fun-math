@@ -1,18 +1,14 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import { useState } from 'react';
 import { Alert, Button, IconButton, Stack, TextField, Typography } from '@mui/material';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
-import { InfoOutlined } from '@mui/icons-material';
 
+export const CollatzConjecture = () => {
 
-const CollatzConjecture = () => {
-  
-  const [numberVal, setNumberVal] = useState("");
-  const [error, setError] = useState("");
-  const [errorStatus, setErrorStatus] = useState(false);
-  const [plotData, setPlotData] = useState([{}]);
-  const [showPlot, setShowPlot] = useState(false);
+  const [numberVal, setNumberVal] = React.useState("");
+  const [error, setError] = React.useState("");
+  const [errorStatus, setErrorStatus] = React.useState(false);
+  const [plotData, setPlotData] = React.useState([{}]);
+  const [showPlot, setShowPlot] = React.useState(false);
   
   
   //Collatz Conjecture recursive function
@@ -79,37 +75,9 @@ const CollatzConjecture = () => {
     setError("");
     setErrorStatus(false);
   }
-  
-  const handleInfoClick = () => {
-    window.open("https://en.wikipedia.org/wiki/Collatz_conjecture", "_blank");
-  }
-  
-  
+
   return (
     <>
-      <Box
-        m={2}
-        pt={3}
-        paddingX={5}
-        paddingY={3}
-        component="form"
-        sx={{
-          '& .MuiTextField-root': { m: 1, width: '25ch' },
-          'border': '1px solid'
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <Stack direction="row" spacing={2}>
-          <Typography variant='h2'>
-            Collatz Conjecture
-          </Typography>
-          
-          <IconButton onClick={handleInfoClick}>
-            <InfoOutlined />
-          </IconButton>          
-        </Stack>
-        
         <p>
           The Collatz Conjecture is a mathematical puzzle that involves starting with any positive whole number and following a specific set of rules until you reach the number 1.
         </p>
@@ -170,11 +138,7 @@ const CollatzConjecture = () => {
           )}
                     
         </Stack>
-        
-      </Box>
     </>
   );
-  
-}
 
-export default CollatzConjecture;
+}

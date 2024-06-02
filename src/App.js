@@ -1,16 +1,24 @@
 import * as React from 'react';
-import KaperkarConstant from './KaperkarConstant';
-import CollatzConjecture from './CollatzConjecture';
-import TinkerbellMap from './TinkerbellMap';
-
+import { CustomBox } from './layouts/CustomBox';
+import { CollatzConjecture } from './maths/CollatzConjecture';
+import { KaperkarConstant } from './maths/KaperkarConstant';
+import { TinkerbellMap } from './maths/TinkerbellMap';
 
 function App() {
+
+  const items = [
+    {title: "TinkerBell Map", infoLink: "https://en.wikipedia.org/wiki/Tinkerbell_map", component: <TinkerbellMap />},
+    {title: "Collatz Conjecture", infoLink: "https://en.wikipedia.org/wiki/Collatz_conjecture", component: <CollatzConjecture />},
+    {title: "Kaprekar's Constant", infoLink: "https://en.wikipedia.org/wiki/6174", component: <KaperkarConstant />}
+  ];
   
   return (
     <>
-      <TinkerbellMap />
-      <KaperkarConstant />
-      <CollatzConjecture />
+      {items.map((item, index) => (
+        <CustomBox key={index} title={item.title} infoLink={item.infoLink}>
+          {item.component}
+        </CustomBox>
+      ))}
     </>
   );
   
