@@ -35,3 +35,18 @@ The Collatz conjecture is one of the most famous unsolved problems in mathematic
   ![](img/Collatz%20conjecture%20sample.png)
   
 </details>
+
+<br>
+
+### Tinkbell Map
+In mathematics, a dynamical system is a system in which a function describes the time dependence of a point in an ambient space, such as in a parametric curve. The Tinkerbell map is a two-dimensional discrete dynamical system that exhibits chaotic behavior. It is named after its resemblance to the shape of the Tinker Bell fairy from Disney's Peter Pan. The Tinkerbell map is defined by a set of iterative equations that determine the evolution of points in its phase space.
+
+
+<details open>
+  <summary>Tinkerbell Map</summary>
+  
+  Example of 10,000 data points plotted
+  
+  ![](img/TinkbellMap.png)
+  
+</details>
