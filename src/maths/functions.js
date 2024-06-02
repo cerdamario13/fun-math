@@ -67,3 +67,27 @@ export const kaprekar_function = (value, operations = []) => {
   // Else return to the function
   return kaprekar_function(output, operations);
 };
+
+/**
+ * Function to calculate the Tinkerbell map values
+ * @param {*} x 
+ * @param {*} y 
+ * @returns 
+ */
+export const dynamicSystem = (iterations, x, y, aValue, bValue, cValue, dValue) => {
+  var data = [];
+  var iter = 0;
+
+  while (iter < iterations) {
+    var varX = x ** 2 - y ** 2 + aValue * x + bValue * y;
+    var varY = 2 * x * y + cValue * x + dValue * y;
+
+    data.push({ x: varX, y: varY });
+
+    x = varX;
+    y = varY;
+    iter += 1;
+  }
+
+  return data;
+};

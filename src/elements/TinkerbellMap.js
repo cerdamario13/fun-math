@@ -11,6 +11,7 @@ import {
   Scatter,
   ZAxis,
 } from "recharts";
+import { dynamicSystem } from "../maths/functions";
 
 export const TinkerbellMap = () => {
   const [xValue, setXValue] = useState(-0.72);
@@ -26,24 +27,6 @@ export const TinkerbellMap = () => {
   const [error, setError] = useState("");
   const [errorStatus, setErrorStatus] = useState(false);
 
-  const dynamicSystem = (x, y) => {
-    var data = [];
-    var iter = 0;
-
-    while (iter < iterations) {
-      var varX = x ** 2 - y ** 2 + aValue * x + bValue * y;
-      var varY = 2 * x * y + cValue * x + dValue * y;
-
-      data.push({ x: varX, y: varY });
-
-      x = varX;
-      y = varY;
-      iter += 1;
-    }
-
-    return data;
-  };
-
   const plotPlot = () => {
     //clear any errors
     setErrorStatus(false);
@@ -56,7 +39,7 @@ export const TinkerbellMap = () => {
       return;
     }
 
-    var data = dynamicSystem(xValue, yValue);
+    var data = dynamicSystem(iterations, xValue, yValue, aValue, bValue, cValue, dValue);
     console.log(data);
     setPlotData(data);
     setShowPlot(true);
