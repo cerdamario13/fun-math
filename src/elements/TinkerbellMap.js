@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useState } from "react";
-import { Stack, TextField, Alert } from "@mui/material";
+import { Stack, TextField, Alert, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+import { useTheme } from '@mui/material/styles';
 import {
   CartesianGrid,
   ResponsiveContainer,
@@ -26,6 +27,7 @@ export const TinkerbellMap = () => {
 
   const [error, setError] = useState("");
   const [errorStatus, setErrorStatus] = useState(false);
+  const theme = useTheme();
 
   const plotPlot = () => {
     //clear any errors
@@ -64,7 +66,7 @@ export const TinkerbellMap = () => {
 
   return (
     <>
-      <p>
+      <Typography paragraph sx={{ color: theme.palette.text.primary }}>
         In mathematics, a dynamical system is a system in which a function
         describes the time dependence of a point in an ambient space, such as in
         a parametric curve. The Tinkerbell map is a two-dimensional discrete
@@ -72,7 +74,7 @@ export const TinkerbellMap = () => {
         resemblance to the shape of the Tinker Bell fairy from Disney's Peter
         Pan. The Tinkerbell map is defined by a set of iterative equations that
         determine the evolution of points in its phase space.
-      </p>
+      </Typography>
 
       {errorStatus && <Alert severity="error">{error}</Alert>}
 

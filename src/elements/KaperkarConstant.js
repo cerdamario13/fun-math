@@ -16,6 +16,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 import { kaprekar_function } from '../maths/functions';
+import { useTheme } from '@mui/material/styles';
+
 
 export const KaperkarConstant = () => {
   const [numberVal, setNumberVal] = useState("");
@@ -27,6 +29,7 @@ export const KaperkarConstant = () => {
   const [numberCount, setNumberCount] = useState(100);
   const [plotData, setPlotData] = useState([{}]);
   const [showPlot, setShowPlot] = useState(false);
+  const theme = useTheme();
 
   
   //clear the errors and operations
@@ -118,12 +121,12 @@ export const KaperkarConstant = () => {
 
   return (
     <>
-      <p>
+      <Typography paragraph sx={{ color: theme.palette.text.primary }}>
         Kaprekar constant, or 6174, is a constant that arises when we take a
         4-digit integer, form the largest and smallest numbers from its digits,
         and then subtract these two numbers. Continuing with this process of
         forming and subtracting, we will always arrive at the number 6174.
-      </p>
+      </Typography>
 
       {errorStatus && <Alert severity="error">{error}</Alert>}
 

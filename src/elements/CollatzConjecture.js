@@ -1,7 +1,15 @@
 import * as React from 'react';
-import { Alert, Button, Stack, TextField, Typography } from '@mui/material';
+import {
+  Alert,
+  Button,
+  Stack,
+  TextField,
+  Typography
+} from '@mui/material';
+import Box from '@mui/material/Box';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 import { collatz_func } from '../maths/functions';
+import { useTheme } from '@mui/material/styles';
 
 export const CollatzConjecture = () => {
 
@@ -10,6 +18,7 @@ export const CollatzConjecture = () => {
   const [errorStatus, setErrorStatus] = React.useState(false);
   const [plotData, setPlotData] = React.useState([{}]);
   const [showPlot, setShowPlot] = React.useState(false);
+  const theme = useTheme();
   
     
   const calculateValue = () => {
@@ -55,17 +64,17 @@ export const CollatzConjecture = () => {
 
   return (
     <>
-        <p>
+        <Typography paragraph sx={{ color: theme.palette.text.primary }}>
           The Collatz Conjecture is a mathematical puzzle that involves starting with any positive whole number and following a specific set of rules until you reach the number 1.
-        </p>
-        <p>Here's how it works:</p>
-        <ol>
+        </Typography>
+        <Typography sx={{ color: theme.palette.text.primary }}>Here's how it works:</Typography>
+        <Box component="ol" sx={{ color: theme.palette.text.primary }}>
           <li>Start with any positive whole number.</li>
           <li>If the number is even, divide it by 2.</li>
           <li>If the number is odd, multiply it by 3 and add 1.</li>
           <li>Take the resulting number and repeat the process, applying the same rules.</li>
-        </ol>
-        <p>The goal is to keep applying these rules to the resulting numbers until you eventually reach 1. The conjecture states that, no matter which positive whole number you start with, you will always eventually reach 1.</p>
+        </Box>
+        <Typography sx={{ color: theme.palette.text.primary }}>The goal is to keep applying these rules to the resulting numbers until you eventually reach 1. The conjecture states that, no matter which positive whole number you start with, you will always eventually reach 1.</Typography>
         
         {errorStatus && <Alert severity='error'>{error}</Alert>}
         
