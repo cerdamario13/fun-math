@@ -7,26 +7,25 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 
 export const SettingsDrawer = (props) => {
 
-
-  const [theme, setTheme] = React.useState("light");
-
   const toggleTheme = () => {
-    setTheme((prevTheme) => {
+    props.setTheme((prevTheme) => {
       const newTheme = prevTheme === "light" ? "dark" : "light";
       localStorage.setItem("theme", newTheme);
       return newTheme;
     });
   };
 
-
   return (
     <>
       <Drawer open={props.open} onClose={props.toggleDrawer(false)}>
         <Box sx={{ width: 250 }} role="presentation">
           <Stack spacing={2} padding={2}>
-            <ToggleButton value="Theme" onClick={toggleTheme}>
-              {theme === "light" ? <ModeNightIcon /> : <LightModeIcon/>}
-              {theme === "light" ? "Dark" : "Light"}
+            <ToggleButton
+              value="Theme"
+              onClick={toggleTheme}
+            >
+              {props.theme === "light" ? <ModeNightIcon /> : <LightModeIcon/>}
+              {props.theme === "light" ? "Dark" : "Light"}
             </ToggleButton>
           </Stack>
         </Box>
