@@ -8,10 +8,11 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { Stack } from '@mui/material';
 import { SettingsDrawer } from './elements/DrawerSettings';
 import { createTheme, ThemeProvider } from '@mui/material';
+import Box from '@mui/material/Box';
 
 function App() {
   const [open, setOpen] = React.useState(false);
-  const [theme, setTheme] = React.useState("light");
+  const [theme, setTheme] = React.useState("dark");
 
   // Create a light theme
   const lightTheme = createTheme({
@@ -59,26 +60,44 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-        <Stack>
-          <Stack direction="row-reverse">
-            <IconButton onClick={toggleDrawer(true)} sx={{ color: theme === "light" ? lightTheme.palette.main : darkTheme.palette.primary.main }}>
-              <SettingsIcon />
-            </IconButton>
+        <Box
+          sx={{
+            backgroundColor: theme === "light" ? "#fff" : "#121212",
+          }}
+        >
+          <Stack>
+            <Stack direction="row-reverse">
+              <IconButton
+                onClick={toggleDrawer(true)}
+                sx={{
+                  color:
+                    theme === "light"
+                      ? lightTheme.palette.main
+                      : darkTheme.palette.primary.main,
+                }}
+              >
+                <SettingsIcon />
+              </IconButton>
+            </Stack>
+
+            <SettingsDrawer
+              open={open}
+              toggleDrawer={toggleDrawer}
+              theme={theme}
+              setTheme={setTheme}
+            />
+
+            {items.map((item, index) => (
+              <CustomBox
+                key={index}
+                title={item.title}
+                infoLink={item.infoLink}
+              >
+                {item.component}
+              </CustomBox>
+            ))}
           </Stack>
-
-          <SettingsDrawer
-            open={open}
-            toggleDrawer={toggleDrawer}
-            theme={theme}
-            setTheme={setTheme}
-          />
-
-          {items.map((item, index) => (
-            <CustomBox key={index} title={item.title} infoLink={item.infoLink}>
-              {item.component}
-            </CustomBox>
-          ))}
-        </Stack>
+        </Box>
       </ThemeProvider>
     </>
   );
