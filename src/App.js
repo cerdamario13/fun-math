@@ -14,18 +14,29 @@ function App() {
   const [open, setOpen] = React.useState(false);
   const [theme, setTheme] = React.useState("dark");
 
-  // Create a light theme
   const lightTheme = createTheme({
     palette: {
       mode: "light",
+      text: {
+        primary: "#000",
+        secondary: "#757575", // choose your secondary text color
+        disabled: "#BDBDBD", // choose your disabled text color
+        hint: "#9E9E9E", // choose your hint text color
+      },
       // define your light mode palette here
     },
   });
-
+  
   // Create a dark theme
   const darkTheme = createTheme({
     palette: {
       mode: 'dark',
+      text: {
+        primary: "#fff",
+        secondary: "#BDBDBD", // choose your secondary text color
+        disabled: "#757575", // choose your disabled text color
+        hint: "#9E9E9E", // choose your hint text color
+      },
       primary: {
         main: '#90caf9',
       },

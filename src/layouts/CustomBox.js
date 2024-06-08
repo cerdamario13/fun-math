@@ -31,7 +31,7 @@ return (
         <Stack direction="row" spacing={2}>
           <Typography
             variant='h2'
-            sx={{ color: theme.palette.primary.main }}
+            sx={{ color: theme.palette.text.primary }}
           >
             {props.title}
           </Typography>
