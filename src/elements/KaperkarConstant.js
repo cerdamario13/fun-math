@@ -82,7 +82,7 @@ export const KaperkarConstant = () => {
       <List>
         {operations.map((item, idx) => (
           <ListItem key={idx}>
-            <ListItemText primary={item} />
+            <ListItemText primary={item} sx={{ color: theme.palette.text.primary }} />
           </ListItem>
         ))}
       </List>
@@ -130,7 +130,7 @@ export const KaperkarConstant = () => {
 
       {errorStatus && <Alert severity="error">{error}</Alert>}
 
-      <p>Try it yourself</p>
+      <Typography sx={{ color: theme.palette.text.primary }}>Try it yourself</Typography>
       <Stack spacing={2} direction="row">
         <TextField
           error={errorStatus}
@@ -152,7 +152,7 @@ export const KaperkarConstant = () => {
 
       {operations.length ? (
         <>
-          <Typography variant="subtitle1">Operations:</Typography>
+          <Typography variant="subtitle1" sx={{ color: theme.palette.text.primary }}>Operations:</Typography>
           <KapOperationsList />
         </>
       ) : (
