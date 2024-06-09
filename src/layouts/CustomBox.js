@@ -21,7 +21,7 @@ return (
       component="form"
       sx={{
         "& .MuiTextField-root": { m: 1, width: "25ch" },
-        border: `1px solid ${theme.palette.primary.main}`,
+        border: `1px solid ${theme.palette.text.primary}`,
         backgroundColor: theme.palette.background.default,
       }}
       noValidate
